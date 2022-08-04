@@ -5,7 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from 'react';
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { theme, QuizButton, Title, Container } from "../../components";
-import { HEIGHT } from "../../utils/Helper";
+import { HEIGHT } from "../../utils/Constants";
 // import * as Font from 'expo-font';
 // // import {
 // //   useFonts,

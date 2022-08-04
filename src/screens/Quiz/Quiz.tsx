@@ -4,6 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { theme, Card, QuizButton, renderLoader, Container } from '../../components';
 import { generateAnswers } from '../../utils/Helper';
+import { quizAPI } from '../../utils/Constants';
 
 const Quiz = ({ navigation }: { navigation: any }) => {
 
@@ -19,7 +20,7 @@ const Quiz = ({ navigation }: { navigation: any }) => {
   const getQuiz = async () => {
     setIsLoading(true);
     try {
-      fetch('https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean&encode=url3986')
+      fetch(quizAPI)
         .then((response) => response.json())
         .then((json) => {
           setQuestions(json.results);

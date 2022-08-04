@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, useWindowDimensions } from "react-native"
+import { HEIGHT } from "../utils/Constants";
 import theme from "./theme";
 
 interface CardProps {
@@ -9,12 +10,11 @@ interface CardProps {
 
 
 const Card = ({ question, style }: CardProps) => {
-    const { height, width } = useWindowDimensions();
     const styles = StyleSheet.create({
         card: {
             backgroundColor: '#fff',
             borderRadius: 10,
-            height: height * 0.4,
+            height: HEIGHT * 0.4,
             padding:15,
             justifyContent:'center'
         },

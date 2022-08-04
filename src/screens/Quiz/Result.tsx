@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, FlatList, } from 'react-native';
 import Title from '../../components/title';
 import { theme, QuizButton, Card, Container } from '../../components';
 import { AntDesign } from '@expo/vector-icons';
-import { HEIGHT } from '../../utils/Helper';
+import { HEIGHT } from '../../utils/Constants';
+
 
 interface renderProps {
   item: {}

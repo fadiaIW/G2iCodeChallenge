@@ -1,5 +1,3 @@
-import { Dimensions } from "react-native";
-
 /* Shuffling the answers to show it in random order  */
 export const shuffleArray = (array: any[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -16,4 +14,3 @@ export const shuffleArray = (array: any[]) => {
     return options
   }
 
-  export const HEIGHT = Dimensions.get('window').height;
