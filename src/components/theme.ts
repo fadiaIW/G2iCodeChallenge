@@ -10,15 +10,15 @@ const theme = {
   
   textVariants: {
     title: {
-    fontSize: 36,
+    fontSize: 32,
     color:'#fff',
     fontWeight: '600',
     lineHeight:54,
     textAlign:'center',
   },
     body: {
-      fontSize: 28,
-      lineHeight: 42,
+      fontSize: 24,
+      lineHeight: 36,
       color: '#fff',
       textAlign: 'center'
 
@@ -27,10 +27,10 @@ const theme = {
       fontSize: 22,
       fontWeight: '600',
       color: '#272829',
-      lineHeight: 34,
+      lineHeight: 33,
     },
     category: {
-      fontSize: 34,
+      fontSize: 32,
       paddingTop: 20,
       color: '#fff',
       alignSelf: 'center',

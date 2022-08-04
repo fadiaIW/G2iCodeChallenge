@@ -4,7 +4,7 @@ import Home from '../screens/Quiz/Home';
 import Quiz from '../screens/Quiz/Quiz';
 import Result from '../screens/Quiz/Result';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator();
 
 function StackNav() {
   return (

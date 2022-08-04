@@ -5,7 +5,6 @@ import {
   Nunito_700Bold,
 } from '@expo-google-fonts/nunito';
 
-
 interface ButtonProps {
   label: string;
   onPress?: () => void;
@@ -28,8 +27,6 @@ const QuizButton = ({ label, onPress, style}: ButtonProps) => {
     >
       <Text style={styles.buttonText}>{label}</Text>
     </TouchableOpacity>
-
-
   );
 };
 
@@ -40,17 +37,16 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
     paddingHorizontal:10,
-    paddingVertical:18,
+    paddingVertical:16,
     backgroundColor:'#fff',
     alignSelf:'center',
     width: '80%',
     alignItems: "center",
     marginBottom: 15,
-   
- 
+  
   },
   buttonText: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: '600',
     color: '#000',
     fontFamily:'Nunito_700Bold'

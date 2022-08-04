@@ -6,8 +6,6 @@ import {
   Nunito_700Bold,
 } from '@expo-google-fonts/nunito';
 
-
-
 interface TitleProps {
   titleText: string;
 }

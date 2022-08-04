@@ -26,7 +26,7 @@ const Result = ({ navigation, route }: any) => {
     return (
       <>
         <View style={{ alignSelf: 'center', paddingRight: 10, flex: 0.15 }}>
-          <AntDesign name={selectedAnswer ? 'checkcircleo' : 'closecircleo'} size={40} color={selectedAnswer ? theme.colors.primary : '#E74C3C'} />
+          <AntDesign name={selectedAnswer ? 'checkcircleo' : 'closecircleo'} size={34} color={selectedAnswer ? theme.colors.primary : '#E74C3C'} />
         </View>
         <Text style={styles.itemText}>{decodeURIComponent(item?.question)}</Text>
       </>
