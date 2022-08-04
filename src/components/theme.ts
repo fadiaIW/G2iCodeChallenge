@@ -15,12 +15,10 @@ const theme = {
     fontWeight: '600',
     lineHeight:54,
     textAlign:'center',
-    // fontFamily: 'Nunito_600SemiBold',
   },
     body: {
       fontSize: 28,
       lineHeight: 42,
-      // fontFamily: 'Nunito_600SemiBold',
       color: '#fff',
       textAlign: 'center'
 
@@ -29,9 +27,7 @@ const theme = {
       fontSize: 22,
       fontWeight: '600',
       color: '#272829',
-      // alignSelf: 'center',
       lineHeight: 34,
-      // fontFamily: 'Nunito_600SemiBold'
     },
     category: {
       fontSize: 34,
@@ -39,7 +35,6 @@ const theme = {
       color: '#fff',
       alignSelf: 'center',
       flex: 0.5,
-      // fontFamily: 'Nunito_600SemiBold'
     },
     
   },

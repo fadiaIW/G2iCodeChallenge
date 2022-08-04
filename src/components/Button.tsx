@@ -1,6 +1,10 @@
 import React from "react";
 import { StyleSheet, Button, Text, TouchableOpacity } from "react-native"
-import theme from "./theme";
+import {
+  useFonts,
+  Nunito_700Bold,
+} from '@expo-google-fonts/nunito';
+
 
 interface ButtonProps {
   label: string;
@@ -9,6 +13,13 @@ interface ButtonProps {
 }
 
 const QuizButton = ({ label, onPress, style}: ButtonProps) => {
+  let [fontsLoaded] = useFonts({
+    Nunito_700Bold,
+  });
+  
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <TouchableOpacity
@@ -35,11 +46,13 @@ const styles = StyleSheet.create({
     width: '80%',
     alignItems: "center",
     marginBottom: 15,
+   
  
   },
   buttonText: {
     fontSize: 24,
     fontWeight: '600',
     color: '#000',
+    fontFamily:'Nunito_700Bold'
   },
 });

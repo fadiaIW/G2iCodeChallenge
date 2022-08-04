@@ -6,47 +6,37 @@ import React, { useEffect, useState } from 'react';
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { theme, QuizButton, Title, Container } from "../../components";
 import { HEIGHT } from "../../utils/Constants";
-// import * as Font from 'expo-font';
-// // import {
-// //   useFonts,
-// //   Nunito_200ExtraLight,
-// //   Nunito_200ExtraLight_Italic,
-// //   Nunito_300Light,
-// //   Nunito_300Light_Italic,
-// //   Nunito_400Regular,
-// //   Nunito_400Regular_Italic,
-// //   Nunito_600SemiBold,
-// //   Nunito_600SemiBold_Italic,
-// //   Nunito_700Bold,
-// //   Nunito_700Bold_Italic,
-// //   Nunito_800ExtraBold,
-// //   Nunito_800ExtraBold_Italic,
-// //   Nunito_900Black,
-// //   Nunito_900Black_Italic,
-// // } from '@expo-google-fonts/nunito';
+import * as Font from 'expo-font';
+import AppLoading from 'expo-app-loading';
+import {
+  useFonts,
+  Nunito_200ExtraLight,
+  Nunito_200ExtraLight_Italic,
+  Nunito_300Light,
+  Nunito_300Light_Italic,
+  Nunito_400Regular,
+  Nunito_400Regular_Italic,
+  Nunito_600SemiBold,
+  Nunito_600SemiBold_Italic,
+  Nunito_700Bold,
+  Nunito_700Bold_Italic,
+  Nunito_800ExtraBold,
+  Nunito_800ExtraBold_Italic,
+  Nunito_900Black,
+  Nunito_900Black_Italic,
+} from '@expo-google-fonts/nunito';
 
 
 
 const Home = ({ navigation }: { navigation: any }) => {
-  // const [fontsLoaded, setFontsLoaded] = useState(true);
 
-  // let customFonts = {
-  //   'Nunito-Medium': require('../../../assets/fonts/Nunito-Medium.ttf'),
-  //   'Inter-SemiBoldItalic': 'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
-  // };
+let [fontsLoaded] = useFonts({
+  Nunito_600SemiBold,
+});
 
-  // async function loadFontsAsync() {
-  //   await Font.loadAsync(customFonts);
-  //   setFontsLoaded(true);
-  // }
-  
-//   useEffect(()=>{
-//     loadFontsAsync();
-//   })
-
-// if(!fontsLoaded) {
-//   return null
-// }else{
+if (!fontsLoaded) {
+  return null;
+}
   return (
     <View>
       <StatusBar backgroundColor={theme.colors.primary} />
@@ -64,8 +54,8 @@ const Home = ({ navigation }: { navigation: any }) => {
           <Title titleText={`Welcome to the\nTrivia Challenge!`} />
 
           <View style={styles.contentView}>
-            <Text style={[theme.textVariants.body, { paddingBottom: 20 }]}>You will be presented with 10 True or False questions.</Text>
-            <Text style={[theme.textVariants.body, { alignSelf: 'center' }]}>Can you score 100%?</Text>
+            <Text style={[theme.textVariants.body, { fontFamily: 'Nunito_600SemiBold',paddingBottom: 20 }]}>You will be presented with 10 True or False questions.</Text>
+            <Text style={[theme.textVariants.body, { fontFamily: 'Nunito_600SemiBold', alignSelf: 'center' }]}>Can you score 100%?</Text>
           </View>
 
           <QuizButton
@@ -79,7 +69,6 @@ const Home = ({ navigation }: { navigation: any }) => {
     </View>
   );
 };
-// };
 
 export default Home;
 

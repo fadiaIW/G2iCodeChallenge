@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import theme from './theme';
+import {
+  useFonts,
+  Nunito_700Bold,
+} from '@expo-google-fonts/nunito';
+
 
 
 interface TitleProps {
@@ -9,9 +14,17 @@ interface TitleProps {
 
 const Title = ({titleText}: TitleProps) => {
 
+  let [fontsLoaded] = useFonts({
+    Nunito_700Bold,
+  });
+  
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={theme.textVariants.title}>{titleText}</Text>
+      <Text style={[theme.textVariants.title,{fontFamily: 'Nunito_700Bold'}]}>{titleText}</Text>
     </View>
   );
 };
@@ -26,10 +39,9 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     lineHeight:54,
     textAlign:'center',
-    // fontFamily: 'Nunito_600SemiBold',
+    fontFamily: 'Nunito_700Bold',
   },
   container: {
-    // justifyContent: 'center',
     alignSelf: 'center',
   },
 });

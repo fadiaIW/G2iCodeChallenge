@@ -1,10 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useFonts } from 'expo-font';
 import { theme, Card, QuizButton, renderLoader, Container } from '../../components';
 import { generateAnswers } from '../../utils/Helper';
 import { quizAPI } from '../../utils/Constants';
+import {
+  useFonts,
+  Nunito_700Bold,
+} from '@expo-google-fonts/nunito';
 
 const Quiz = ({ navigation }: { navigation: any }) => {
 
@@ -15,6 +18,11 @@ const Quiz = ({ navigation }: { navigation: any }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedAnswers, setSelectedAnswers] = useState<boolean[]>([]);
   const didMount = React.useRef(false);
+  let [fontsLoaded] = useFonts({
+    Nunito_700Bold,
+  });
+  
+  
 
   /* API call to get the quiz */
   const getQuiz = async () => {
@@ -84,7 +92,9 @@ const Quiz = ({ navigation }: { navigation: any }) => {
       questions
     })
   }
-
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <Container>
       <>
@@ -92,10 +102,10 @@ const Quiz = ({ navigation }: { navigation: any }) => {
           renderLoader()
           : questions && (
             <View style={styles.parent}>
-              <Text style={[theme.textVariants.category, { marginTop: 25 }]}>{decodeURIComponent(questions[ques].category)}</Text>
+              <Text style={[theme.textVariants.category, {fontFamily:'Nunito_700Bold',  marginTop: 25 }]}>{decodeURIComponent(questions[ques].category)}</Text>
               <View style={{ flex: 2 }}>
                 <Card question={decodeURIComponent(questions[ques].question)} />
-                <Text style={[theme.textVariants.category, { fontSize: 22 }]}>{ques + 1} of 10</Text>
+                <Text style={[theme.textVariants.category, { fontFamily:'Nunito_700Bold', fontSize: 22 }]}>{ques + 1} of 10</Text>
               </View>
               <View style={styles.options}>
 

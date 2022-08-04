@@ -4,6 +4,10 @@ import Title from '../../components/title';
 import { theme, QuizButton, Card, Container } from '../../components';
 import { AntDesign } from '@expo/vector-icons';
 import { HEIGHT } from '../../utils/Constants';
+import {
+  useFonts,
+  Nunito_600SemiBold,
+} from '@expo-google-fonts/nunito';
 
 
 interface renderProps {
@@ -11,6 +15,9 @@ interface renderProps {
 }
 
 const Result = ({ navigation, route }: any) => {
+  let [fontsLoaded] = useFonts({
+    Nunito_600SemiBold,
+  });
   const { score, questions } = route.params;
 
   /* Render result based on whether its a right or wrong answer by the user*/
@@ -24,6 +31,10 @@ const Result = ({ navigation, route }: any) => {
         <Text style={styles.itemText}>{decodeURIComponent(item?.question)}</Text>
       </>
     )
+  }
+
+  if (!fontsLoaded) {
+    return null;
   }
 
   return (
@@ -67,7 +78,8 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
     lineHeight: 54,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily:'Nunito_600SemiBold'
   },
   card: {
     backgroundColor: '#fff',
@@ -86,7 +98,8 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 20,
     color: theme.colors.text,
-    flex: 1
+    flex: 1,
+    fontFamily:'Nunito_700Bold'
   },
 });
 
