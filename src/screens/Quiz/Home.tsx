@@ -3,8 +3,9 @@ import { CompositeNavigationProp } from "@react-navigation/native";
 import Constants from "expo-constants";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from 'react';
-import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
+import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { theme, QuizButton, Title, Container } from "../../components";
+import { HEIGHT } from "../../utils/Helper";
 // import * as Font from 'expo-font';
 // // import {
 // //   useFonts,
@@ -38,7 +39,6 @@ const Home = ({ navigation }: { navigation: any }) => {
   //   await Font.loadAsync(customFonts);
   //   setFontsLoaded(true);
   // }
-  const { height, width } = useWindowDimensions();
   
 //   useEffect(()=>{
 //     loadFontsAsync();
@@ -59,7 +59,7 @@ const Home = ({ navigation }: { navigation: any }) => {
             resizeMode="contain"
           />
         </View>
-        <View style={[styles.contentStyle, { height: height * 0.55, }]}>
+        <View style={styles.contentStyle}>
 
           <Title titleText={`Welcome to the\nTrivia Challenge!`} />
 
@@ -111,7 +111,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 35,
     justifyContent: 'space-between',
     paddingVertical: 40,
-    alignContent: 'center'
+    alignContent: 'center',
+    height: HEIGHT * 0.55
   }
 
 

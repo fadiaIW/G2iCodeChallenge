@@ -1,44 +1,29 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, } from 'react-native';
 import Title from '../../components/title';
 import { theme, QuizButton, Card, Container } from '../../components';
 import { AntDesign } from '@expo/vector-icons';
+import { HEIGHT } from '../../utils/Helper';
+
+interface renderProps {
+  item: {}
+}
 
 const Result = ({ navigation, route }: any) => {
   const { score, questions } = route.params;
-  const { height } = useWindowDimensions();
 
-  const styles = StyleSheet.create({
-    scoreValue: {
-      fontSize: 32,
-      color: '#fff',
-      fontWeight: '600',
-      lineHeight: 54,
-      textAlign: 'center'
-    },
-    card: {
-      backgroundColor: '#fff',
-      borderRadius: 10,
-      height: height * 0.65,
-      paddingHorizontal: 15,
-      justifyContent: 'center',
-      marginVertical: 20
-    },
-    itemView: {
-      flexDirection: 'row',
-      paddingVertical: 12,
-      paddingHorizontal: 10,
-      alignContent: 'center'
-    },
-    itemText: {
-      fontSize: 20,
-      color: theme.colors.text,
-      flex: 1
-    },
-
-
-
-  });
+  /* Render result based on whether its a right or wrong answer by the user*/
+  const renderResult = (item: renderProps) => {
+    const selectedAnswer = item?.selectedAnswer;
+    return (
+      <>
+        <View style={{ alignSelf: 'center', paddingRight: 10, flex: 0.15 }}>
+          <AntDesign name={selectedAnswer ? 'checkcircleo' : 'closecircleo'} size={40} color={selectedAnswer ? theme.colors.primary : '#E74C3C'} />
+        </View>
+        <Text style={styles.itemText}>{decodeURIComponent(item?.question)}</Text>
+      </>
+    )
+  }
 
   return (
     <Container>
@@ -53,21 +38,7 @@ const Result = ({ navigation, route }: any) => {
             renderItem={({ item }) => {
               return (
                 <View style={styles.itemView}>
-                  {item.selectedAnswer === true ?
-                    <>
-                      <View style={{ alignSelf: 'center', paddingRight: 10, flex: 0.15 }}>
-                        <AntDesign name="checkcircleo" size={40} color={theme.colors.primary} />
-                      </View>
-                      <Text style={styles.itemText}>{decodeURIComponent(item.question)}</Text>
-                    </>
-                    :
-                    <>
-                      <View style={{ alignSelf: 'center', paddingRight: 10, flex: 0.15 }}>
-                        <AntDesign name="closecircleo" size={40} color='#E74C3C' />
-                      </View>
-                      <Text style={styles.itemText}>{decodeURIComponent(item.question)}</Text>
-                    </>
-                  }
+                  {renderResult(item)}
                 </View>
               )
             }}
@@ -88,4 +59,33 @@ const Result = ({ navigation, route }: any) => {
 
 
 export default Result;
+
+const styles = StyleSheet.create({
+  scoreValue: {
+    fontSize: 32,
+    color: '#fff',
+    fontWeight: '600',
+    lineHeight: 54,
+    textAlign: 'center'
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    height: HEIGHT * 0.65,
+    paddingHorizontal: 15,
+    justifyContent: 'center',
+    marginVertical: 20
+  },
+  itemView: {
+    flexDirection: 'row',
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    alignContent: 'center'
+  },
+  itemText: {
+    fontSize: 20,
+    color: theme.colors.text,
+    flex: 1
+  },
+});
 

@@ -8,7 +8,6 @@ const theme = {
     text: "#272829",
   },
   
- 
   textVariants: {
     title: {
     fontSize: 36,

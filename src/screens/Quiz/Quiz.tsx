@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { theme, Card, QuizButton, renderLoader, Container } from '../../components';
 import { generateAnswers } from '../../utils/Helper';
@@ -9,12 +9,13 @@ const Quiz = ({ navigation }: { navigation: any }) => {
 
   const [questions, setQuestions] = useState<[]>();
   const [ques, setQues] = useState<number>(0);
-  const [options, setOptions] = useState<string[]>([])
-  const [score, setScore] = useState<number>(0)
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [options, setOptions] = useState<string[]>([]);
+  const [score, setScore] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedAnswers, setSelectedAnswers] = useState<boolean[]>([]);
   const didMount = React.useRef(false);
 
+  /* API call to get the quiz */
   const getQuiz = async () => {
     setIsLoading(true);
     try {
@@ -34,11 +35,13 @@ const Quiz = ({ navigation }: { navigation: any }) => {
     }
   }
 
+
   useEffect(() => {
     getQuiz();
   }, []);
 
-  useEffect(() => {
+  /* Incrementing the question counter only after the score has been set and selectedAnswers array is updated*/
+    useEffect(() => {
     if (!didMount.current) {
       didMount.current = true;
       return;
@@ -47,6 +50,7 @@ const Quiz = ({ navigation }: { navigation: any }) => {
   }, [selectedAnswers])
 
 
+  /* Score calculation and creating a boolean selected answer array  */
   const handleSelectedOption = (option: string) => {
     const tempArray = [...selectedAnswers];
     if (option === questions[ques].correct_answer) {
@@ -60,7 +64,8 @@ const Quiz = ({ navigation }: { navigation: any }) => {
     }
   }
 
-  function getNextQuestion() {
+/* Incrementing the question counter and navigation*/
+  const getNextQuestion = () => {
     if (ques !== 9) {
       setQues(ques + 1)
       setOptions(generateAnswers(questions[ques + 1]));
@@ -92,16 +97,16 @@ const Quiz = ({ navigation }: { navigation: any }) => {
                 <Text style={[theme.textVariants.category, { fontSize: 22 }]}>{ques + 1} of 10</Text>
               </View>
               <View style={styles.options}>
-                <QuizButton
-                  style={{ width: '100%', }}
-                  label={decodeURIComponent(options[0])}
-                  onPress={() => handleSelectedOption(options[0])}
-                />
-                <QuizButton
-                  style={{ width: '100%', }}
-                  label={decodeURIComponent(options[1])}
-                  onPress={() => handleSelectedOption(options[1])}
-                />
+
+                {options?.map((opt, i) => {               
+                  return (
+                    <QuizButton
+                      style={{ width: '100%', }}
+                      label={decodeURIComponent(opt)}
+                      onPress={() => handleSelectedOption(opt)}
+                    />)
+                })}
+
               </View>
             </View>
           )}
@@ -113,7 +118,7 @@ const Quiz = ({ navigation }: { navigation: any }) => {
 export default Quiz;
 
 const styles = StyleSheet.create({
- 
+
   options: {
     marginVertical: 16,
     flex: 1,
