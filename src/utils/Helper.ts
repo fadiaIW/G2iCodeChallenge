@@ -8,8 +8,8 @@ export const shuffleArray = (array: any[]) => {
 
   /* Merging correct and incorrect answers together in one array  */
   export const generateAnswers = (question: string[]) => {
-    const options : any[] = [...question.incorrect_answers]
-    options.push(question.correct_answer)
+    const options : any[] = [...question.incorrect_answers];
+    options.push(question.correct_answer);
     shuffleArray(options);
     return options
   }

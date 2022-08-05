@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useState, useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { theme, Card, QuizButton, renderLoader, Container } from '../../components';
@@ -111,11 +111,13 @@ const Quiz = ({ navigation }: { navigation: any }) => {
 
                 {options?.map((opt, i) => {               
                   return (
+                    <Fragment key={i}>
                     <QuizButton
                       style={{ width: '100%', }}
                       label={decodeURIComponent(opt)}
                       onPress={() => handleSelectedOption(opt)}
-                    />)
+                    />
+                    </Fragment>)
                 })}
 
               </View>

@@ -8,7 +8,7 @@ import {
 interface ButtonProps {
   label: string;
   onPress?: () => void;
-  style?:{}
+  style?:{};
 }
 
 const QuizButton = ({ label, onPress, style}: ButtonProps) => {
