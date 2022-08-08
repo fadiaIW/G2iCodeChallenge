@@ -15,8 +15,8 @@ $ git clone https://github.com/fadiaIW/G2iCodeChallenge.git
 Install G2iCodeChallenge with npm
 
 ```bash
-  npm install G2iCodeChallenge
   cd G2iCodeChallenge
+  npm install G2iCodeChallenge
   expo start
 ```
     
